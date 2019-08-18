@@ -1,14 +1,39 @@
 import React, { Component } from 'react'
 import Navbar from './Navbar'
-import styled, { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import theme from '../styles'
+
+const GlobalStyles = createGlobalStyle`
+    body {
+        @import url('https://fonts.googleapis.com/css?family=Oswald:700&display=swap')
+        font-family: 'Oswald', sans-serif;
+    }
+`
 
 const Text = styled.h4`
     padding: 1rem;
     color: ${props => props.theme.colors.lightForeground};
-    font-size: 2rem;
+    font-size: 3rem;
     text-align: center;
-    font-family: ${props => props.theme.fonts.main};
+    font-weight: 700;
+    text-transform: uppercase;
+    @media (max-width: 650px) {
+        font-size: 2rem;
+    }
+`
+const SubText = styled.h6`
+    padding: 1rem;
+    color: ${props => props.theme.colors.lightForeground};
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    @media (max-width: 650px) {
+        font-size: 1rem;
+    }
+    @media (max-width: 460px) {
+        font-size: 2rem;
+    }
 `
 
 const Container = styled.div`
@@ -20,14 +45,29 @@ const Container = styled.div`
     height: 100vh;
 `
 
+const TextContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 460px) {
+        flex-direction: column;
+    }
+`
+
 class App extends Component {
     render () {
         return (
             <ThemeProvider theme={theme}>
-                <Container>
-                    <Navbar />
-                    <Text>William Taylor - Front-end Developer</Text>
-                </Container>
+                <div>
+                    <GlobalStyles />
+                    <Container>
+                        <Navbar />
+                        <TextContainer>
+                            <Text>Willybabes //</Text>
+                            <SubText>Front-end<br/>Developer</SubText>
+                        </TextContainer>
+                    </Container>
+                </div>
             </ThemeProvider>
         )
     }

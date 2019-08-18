@@ -7,7 +7,8 @@ const styles = {
         foreground: '#45A29E',
     },
     fonts: {
-        main: 'robotoMono'
+        robotoMono: 'robotoMono',
+        oswald: 'Oswald'
     }
 }
 
