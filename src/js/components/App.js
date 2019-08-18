@@ -16,15 +16,28 @@ const keyframesIlly = keyframes`
 
 const Text = styled.h4`
     animation: ${keyframesIlly} 0.2s ease-in-out 0s infinite;
+    padding: 1rem;
+`
+
+const CenterText = styled.div`
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    height: 100vh;
 `
 
 class App extends Component {
     render () {
         return (
-            <div>
-                <Navbar />
-                Illybabes is a fitty <Text>Option A all the time!</Text>
-            </div>
+            <CenterText>
+                {/* <Navbar /> */}
+                <div>😍 Illybabes is a fitty 😍</div>
+                <Text>Option A all the time! 🍈🍈</Text>
+            </CenterText>
         )
     }
 }
