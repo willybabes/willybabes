@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import styles from '../styles'
 
 const NavbarContainer = styled.div`
-    background: red;
+    color: ${styles.lightForeground};
     padding: 10px;
 `
 
@@ -12,7 +13,19 @@ const List = styled.ul`
 `
 
 const ListItem = styled.li`
-    padding: 10px;
+    padding: 2rem;
+`
+const ListLink = styled.a`
+    color: ${styles.colors.lightForeground};
+    text-decoration: none;
+    border-bottom: 4px solid ${styles.colors.lightForeground};
+    transition: 0.4s;
+
+    &:hover {
+        background: ${styles.colors.lightForeground};
+        transition: 0.4s;
+        color: ${styles.colors.background};
+    }
 `
 
 export default class Navbar extends Component {
@@ -20,8 +33,12 @@ export default class Navbar extends Component {
         return (
             <NavbarContainer>
                 <List>
-                    <ListItem><a href="#">About</a></ListItem>
-                    <ListItem><a href="#">Contact</a></ListItem>
+                    <ListItem>
+                        <ListLink href="#">About</ListLink>
+                    </ListItem>
+                    <ListItem>
+                        <ListLink href="#">Contact</ListLink>
+                    </ListItem>
                 </List>
             </NavbarContainer>
         )

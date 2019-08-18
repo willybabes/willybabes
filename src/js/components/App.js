@@ -1,43 +1,30 @@
 import React, { Component } from 'react'
 import Navbar from './Navbar'
-import styled, { keyframes } from 'styled-components'
-
-const keyframesIlly = keyframes`
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity 1;
-    }
-    100% {
-        opacity 0;
-    }
-`
+import styled, { ThemeProvider } from 'styled-components'
+import theme from '../styles'
 
 const Text = styled.h4`
-    animation: ${keyframesIlly} 0.2s ease-in-out 0s infinite;
     padding: 1rem;
+    color: ${props => props.theme.colors.lightForeground};
+    font-size: 2rem;
+    text-align: center;
+    font-family: ${props => props.theme.fonts.main};
 `
 
-const CenterText = styled.div`
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 2rem;
+const Container = styled.div`
+    background: ${props => props.theme.colors.background};
     height: 100vh;
 `
 
 class App extends Component {
     render () {
         return (
-            <CenterText>
-                {/* <Navbar /> */}
-                <div>😍 Illybabes is a fitty 😍</div>
-                <Text>Option A all the time! 🍈🍈</Text>
-            </CenterText>
+            <ThemeProvider theme={theme}>
+                <Container>
+                    <Navbar />
+                    <Text>William Taylor - Front-end Developer</Text>
+                </Container>
+            </ThemeProvider>
         )
     }
 }
