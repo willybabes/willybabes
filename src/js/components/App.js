@@ -6,7 +6,7 @@ class App extends Component {
         return (
             <div>
                 <Navbar />
-                Hiya
+                Illybabes is a fitty
             </div>
         )
     }
