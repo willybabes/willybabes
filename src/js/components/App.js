@@ -2,37 +2,15 @@ import React, { Component } from 'react'
 import Navbar from './Navbar'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import theme from '../styles'
+import { BrowserRouter, Route } from 'react-router-dom'
+import About from './About'
+import Contact from './Contact'
+import Home from './Home'
 
 const GlobalStyles = createGlobalStyle`
     body {
         @import url('https://fonts.googleapis.com/css?family=Oswald:700&display=swap')
         font-family: 'Oswald', sans-serif;
-    }
-`
-
-const Text = styled.h4`
-    padding: 1rem;
-    color: ${props => props.theme.colors.lightForeground};
-    font-size: 3rem;
-    text-align: center;
-    font-weight: 700;
-    text-transform: uppercase;
-    @media (max-width: 650px) {
-        font-size: 2rem;
-    }
-`
-const SubText = styled.h6`
-    padding: 1rem;
-    color: ${props => props.theme.colors.lightForeground};
-    font-size: 1.3rem;
-    text-align: center;
-    font-weight: 700;
-    text-transform: uppercase;
-    @media (max-width: 650px) {
-        font-size: 1rem;
-    }
-    @media (max-width: 460px) {
-        font-size: 2rem;
     }
 `
 
@@ -45,32 +23,68 @@ const Container = styled.div`
     height: 100vh;
 `
 
-const TextContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @media (max-width: 460px) {
-        flex-direction: column;
-    }
-`
-
 class App extends Component {
     render () {
         return (
             <ThemeProvider theme={theme}>
-                <div>
+                <BrowserRouter>
                     <GlobalStyles />
                     <Container>
                         <Navbar />
-                        <TextContainer>
-                            <Text>Willybabes //</Text>
-                            <SubText>Front-end<br/>Developer</SubText>
-                        </TextContainer>
+                        <Route exact path='/' component={Home} />
+                        <Route path='/about' component={About} />
+                        <Route path='/contact' component={Contact} />
                     </Container>
-                </div>
+                </BrowserRouter>
             </ThemeProvider>
         )
     }
 }
 
 export default App
+
+// import React from "react";
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+// function App() {
+//   return (
+//     <Router>
+//       <div>
+//         <Header />
+
+//         <Route exact path="/" component={Home} />
+//         <Route path="/about" component={About} />
+//       </div>
+//     </Router>
+//   );
+// }
+
+// function Home() {
+//   return <h2>Home</h2>;
+// }
+
+// function About() {
+//   return <h2>About</h2>;
+// }
+
+// function Topic({ match }) {
+//   return <h3>Requested Param: {match.params.id}</h3>;
+// }
+
+// function Header() {
+//   return (
+//     <ul>
+//       <li>
+//         <Link to="/">Home</Link>
+//       </li>
+//       <li>
+//         <Link to="/about">About</Link>
+//       </li>
+//       <li>
+//         <Link to="/topics">Topics</Link>
+//       </li>
+//     </ul>
+//   );
+// }
+
+// export default App;

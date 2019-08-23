@@ -30,6 +30,9 @@ module.exports = {
             }
         ],
     },
+    devServer: {
+        historyApiFallback: true
+    },
     resolve: {
         extensions: ['.scss', '.js', '.jsx'],
     },
